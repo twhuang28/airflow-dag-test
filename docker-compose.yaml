@@ -1,0 +1,21 @@
+---
+services:
+  postgresql:
+    image: postgres:12
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "airflow"]
+      interval: 60s
+      retries: 2
+    restart: always
+    environment:
+        POSTGRES_DB: postgres
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: postgres
+        PGDATA: /var/lib/postgresql/data
+    volumes:
+        - ./postgres-db-volume:/var/lib/postgresql/data
+    ports:
+        - "5444:5432"
+
+volumes:
+  postgres-db-volume:
