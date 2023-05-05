@@ -6,7 +6,7 @@ from dags.dag_test_example import dag_test_example
 def test_process_event(setup_docker_compose):
 
     dag_object = dag_test_example()
-    conn_path = "config/connections.yaml"
+    conn_path = "config/connections_templates.yaml"
     variables_path = "config/variables.yaml"
     my_discount = 0.60
 
