@@ -31,8 +31,4 @@ jobs:
           airflow db check
       - name: Test with pytest
         run: |
-          pwd
-          ls -al
-          ls -al config/
-          ls -al tests/config/
           python -m pytest tests/
