@@ -27,7 +27,7 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Run airflow metadata db
         run: |
-          export AIRFLOW_HOME=$PWD
+          # export AIRFLOW_HOME=$PWD
           airflow db init
           airflow db check
       - name: Test with pytest
