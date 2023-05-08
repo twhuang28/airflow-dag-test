@@ -14,8 +14,6 @@ source venv/bin/activate
 pip3 install -r requirements.txt
 ```
 
-4. Provide your own Amazon connection by creating a `connections.yaml` file based upon `connections_template.yaml`. 
-5. Create an S3 bucket `live-dag-test-bucket` containing one JSON file named `order_values.json` containing the following JSON string: `{'1001': 301.27, '1002': 433.21, '1003': 502.22}`.
 6. Run `python dag_test_example.py`.
 
 ### Relevant resources
