@@ -1,4 +1,5 @@
 import json
+# import pandas
 from airflow.models import Variable
 from pendulum import datetime
 from airflow.decorators import dag, task
@@ -15,6 +16,7 @@ from dags.custom_operator import MyBasicMathOperator
     # render Jinja template as native Python object
     render_template_as_native_obj=True,
     params={"discount": 1},
+    tags=["orders"]
 )
 def dag_test_example():
 
@@ -47,6 +49,10 @@ def dag_test_example():
         first_number="{{ ti.xcom_pull(task_ids='sum_orders_plus_shipping', key='return_value') }}",
         second_number="{{ params.discount }}",
         operation="*",
+        trigger_rule="all_success"
     )
     
     create_table >> sum_orders_plus_shipping() >> apply_discount
+
+
+dag_test_example()

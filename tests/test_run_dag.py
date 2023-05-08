@@ -3,7 +3,7 @@ from pendulum import datetime
 from dags.dag_test_example import dag_test_example
 
 
-def test_process_event(setup_docker_compose):
+def test_run_dag(setup_docker_compose):
 
     dag_object = dag_test_example()
     conn_path = "config/connections_templates.yaml"
