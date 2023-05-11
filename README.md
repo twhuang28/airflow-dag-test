@@ -1,20 +1,26 @@
-## dag.test() example repository
+# How to test dags?
+### Why we need to test dags?
+* To ensure that dags are supposed to work
+* Allow colleagues to better verify that the dags are correct
 
-This repository contains the code shown in the LIVE with Astronomer on 2023-03-07, showing how to use `dag.test()`.
+### How to test dags
+* [Test dags setup](./tests/test_validate_dag.py)
+* [Test customized operators](./tests/test_operator.py)
+* [Test dags run](./tests/test_run_dag.py)
 
 ### How to use this repository
 
 1. Clone the repository.
 2. Make sure you are in an environment that has Airflow 2.5+ installed by running `airflow version` from your command line.
-3. Make sure you are in an environment that has the [Airflow Amazon provider](https://registry.astronomer.io/providers/amazon) installed. If you use `virtualenv` you can run the following commands:
-
-```sh
-virtualenv venv
-source venv/bin/activate
-pip3 install -r requirements.txt
-```
-
-6. Run `python dag_test_example.py`.
+3. If you use `virtualenv` you can run the following commands:
+    ```sh
+    virtualenv venv
+    source venv/bin/activate
+    pip3 install -r requirements.txt
+    docker-compose up -d
+    ```
+4. Run `python run_dag.py`.
+5. Run `python -m pytest tests/`.
 
 ### Relevant resources
 

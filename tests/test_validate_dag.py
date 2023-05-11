@@ -7,6 +7,7 @@ from airflow.models import DagBag
 
 
 APPROVED_TAGS = {"orders"}
+DAG_FOLDER = "./dags"
 
 
 def get_import_errors():
@@ -14,7 +15,7 @@ def get_import_errors():
     Generate a tuple for import errors in the dag bag
     """
 
-    dag_bag = DagBag(dag_folder="./dags", include_examples=False)
+    dag_bag = DagBag(dag_folder=DAG_FOLDER, include_examples=False)
 
     def strip_path_prefix(path):
         return os.path.relpath(path, os.environ.get("AIRFLOW_HOME"))
@@ -29,7 +30,7 @@ def get_dags():
     Generate a tuple of dag_id, <DAG objects> in the DagBag
     """
 
-    dag_bag = DagBag(dag_folder="./dags", include_examples=False)
+    dag_bag = DagBag(dag_folder=DAG_FOLDER, include_examples=False)
 
     def strip_path_prefix(path):
         return os.path.relpath(path, os.environ.get("AIRFLOW_HOME"))
@@ -62,7 +63,7 @@ def test_task_trigger_rule():
     """
         test task level parameters
     """
-    dag_bag = DagBag(dag_folder="./dags", include_examples=False)
+    dag_bag = DagBag(dag_folder=DAG_FOLDER, include_examples=False)
     dag_test_example = dag_bag.dags['dag_test_example']
     apply_discount_ti = dag_test_example.get_task('apply_discount')
     assert apply_discount_ti.trigger_rule == 'all_success'
@@ -72,7 +73,7 @@ def test_task_dependency():
     """
         test task dependency
     """
-    dag_bag = DagBag(dag_folder="./dags", include_examples=False)
+    dag_bag = DagBag(dag_folder=DAG_FOLDER, include_examples=False)
     dag_test_example = dag_bag.dags['dag_test_example']
     apply_discount_ti = dag_test_example.get_task('create_table')
     sum_orders_plus_shipping_ti = dag_test_example.get_task('sum_orders_plus_shipping')
