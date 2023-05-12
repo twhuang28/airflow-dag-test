@@ -9,7 +9,7 @@ if __name__ == "__main__":
     variables_path = "config/variables.yaml"
     my_discount = 0.60
 
-    if os.path.isfile(conn_path) and os.path.isfile(conn_path):
+    if os.path.isfile(conn_path):
         dag_object.test(
             execution_date=datetime(2024, 1, 29),
             conn_file_path=conn_path,
